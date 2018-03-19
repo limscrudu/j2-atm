@@ -108,4 +108,10 @@ Withdraw Cash from the customers account. The money must be available in the acc
 
 * **Notes:**
 
-   
+ # Extra Testing
+ 
+ This is a basic test of the various requirements.
+ 
+ ```
+ mvn test -Dtest=com.limscrudu.j2atm.controller.ATMControllerIT
+ ```
