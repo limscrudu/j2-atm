@@ -95,7 +95,8 @@ Withdraw Cash from the customers account. The money must be available in the acc
 
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `{"resultStatus":"Withdrawal amount exceeds customer balance","money":[]}`
- OR
+    
+  OR
 
   * **Code:** 400 BAD REQUEST <br />
     **Content:** `"resultStatus":"Exact withdrawal amount cannot be dispensed","money":[]}`
