@@ -102,15 +102,6 @@ public class Account {
 	 *            - the amount withdrawn from the account
 	 */
 	public void updateBalance(Withdrawal withdrawal) {
-		BigDecimal currentBalance = getCurrentBalance();
-		BigDecimal withdrawalAmount = new BigDecimal(withdrawal.getAmount());
-		if (withdrawalAmount.compareTo(currentBalance) > 0) {
-			// the withdrawal amount exceeds the current balance so we're going into
-			// overdraft
-			setOverdraft(new BigDecimal(withdrawal.getAmount()).subtract(getCurrentBalance()));
-			setCurrentBalance(new BigDecimal("0"));
-		} else {
-			setCurrentBalance(getCurrentBalance().subtract(BigDecimal.valueOf(withdrawal.getAmount())));
-		}
+		setCurrentBalance(getCurrentBalance().subtract(BigDecimal.valueOf(withdrawal.getAmount())));
 	}
 }

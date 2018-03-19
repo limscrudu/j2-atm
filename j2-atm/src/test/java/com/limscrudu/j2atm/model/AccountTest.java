@@ -38,8 +38,8 @@ public class AccountTest extends TestCase{
 	public void testUpdateBalanceAndOverdraft() {
 		Integer withdraw = 900;
 		account1.updateBalance(new Withdrawal(withdraw));
-		assertEquals(0, account1.getCurrentBalance().intValue());
-		assertEquals(initialBalance + overdraft - withdraw, account1.getOverdraft().intValue());
+		assertEquals(initialBalance - withdraw, account1.getCurrentBalance().intValue());
+		assertEquals(overdraft.intValue(), account1.getOverdraft().intValue());
 	}
 
 }
