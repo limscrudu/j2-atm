@@ -2,6 +2,15 @@ package com.limscrudu.j2atm.model;
 
 import java.math.BigDecimal;
 
+/**
+ * @author limcearna
+ * 
+ *         Represents an Account in the bank. It maintains the balance and
+ *         overdraft facility of the account The amount available for withdrawal
+ *         is the current balance plus the overdraft Once a withdrawal is made
+ *         the account balance and overdraft need to be updated
+ * 
+ */
 public class Account {
 
 	private String accountNo;
@@ -77,10 +86,21 @@ public class Account {
 		this.overdraft = overdraft;
 	}
 
+	/**
+	 * How much money can we withdraw from the account
+	 * 
+	 * @return - the amount available for withdrawal
+	 */
 	public BigDecimal getAvailableForWidrawal() {
 		return getCurrentBalance().add(this.getOverdraft());
 	}
 
+	/**
+	 * Update the account balance and overdraft after a withdrawal has been made
+	 * 
+	 * @param withdrawal
+	 *            - the amount withdrawn from the account
+	 */
 	public void updateBalance(Withdrawal withdrawal) {
 		BigDecimal currentBalance = getCurrentBalance();
 		BigDecimal withdrawalAmount = new BigDecimal(withdrawal.getAmount());

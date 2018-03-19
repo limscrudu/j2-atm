@@ -1,5 +1,11 @@
 package com.limscrudu.j2atm.model;
 
+/**
+ * @author limcearna
+ * 
+ * A withdrawal specified by an amount, used as the input to the withdraw cash service
+ *
+ */
 public class Withdrawal {
 	
 	private Integer amount;

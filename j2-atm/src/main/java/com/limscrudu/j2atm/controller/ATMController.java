@@ -43,8 +43,6 @@ public class ATMController {
 		}
 
 		Balance balance = atmService.inquireBalance(accountNo);
-		if (balance == null)
-			return new ResponseEntity<Balance>(new Balance(), HttpStatus.BAD_REQUEST);
 		return new ResponseEntity<Balance>(balance, HttpStatus.OK);
 	}
 
@@ -71,9 +69,13 @@ public class ATMController {
 		}
 
 		Wallet wallet = atmService.withdrawCash(accountNo, withdrawal);
-		if (wallet == null)
-			return new ResponseEntity<Wallet>(new Wallet(), HttpStatus.BAD_REQUEST);
-		return new ResponseEntity<Wallet>(wallet, HttpStatus.OK);
+		if (wallet != null && wallet.getResultStatus().contentEquals(ResultStatus.OK)) {
+			return new ResponseEntity<Wallet>(wallet, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Wallet>(wallet, HttpStatus.BAD_REQUEST);
+		}
+			
+		
 	}
 
 }

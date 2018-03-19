@@ -86,9 +86,9 @@ public class ATMService {
 		}
 
 		wallet = atm.withdrawCash(withdrawal);
-		if (wallet != null) {
+		if (wallet != null && wallet.getResultStatus().contentEquals(ResultStatus.OK)) {
 			currentAccount.updateBalance(withdrawal);
-		}
+		} 
 		return wallet;
 	}
 

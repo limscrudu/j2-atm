@@ -13,14 +13,18 @@ public class ATMTest extends TestCase {
 
 	private ATM atm = new ATM();
 	private Integer initialBalance;
+	private Integer num50s = 20;
+	private Integer num20s = 30;
+	private Integer num10s = 30;
+	private Integer num5s = 20;
 	
 	@Override
 	protected void setUp() throws Exception {
-		atm.add(50, 20);
-		atm.add(20, 30);
-		atm.add(10, 30);
-		atm.add(5,  20);
-		initialBalance = 50*20 + 20*30 + 10*30 + 5*20;
+		atm.add(50, num50s);
+		atm.add(20, num20s);
+		atm.add(10, num10s);
+		atm.add(5,  num5s);
+		initialBalance = 50*num50s + 20*num20s + 10*num10s + 5*num5s;
 	}
 
 	@Test
@@ -110,6 +114,13 @@ public class ATMTest extends TestCase {
 		Integer withdraw = 83;
 		Wallet wallet = atm.withdrawCash(new Withdrawal(withdraw));
 		assertEquals(ResultStatus.EXACT_AMOUNT_NOT_AVAILABLE, wallet.getResultStatus());		
+	}
+	@Test
+	public void testGetAvailableDenominationQuantity() {
+		assertEquals(num50s.intValue(), atm.getAvailableDenominationQuantity(50).intValue()); 
+		assertEquals(num20s.intValue(), atm.getAvailableDenominationQuantity(20).intValue()); 
+		assertEquals(num10s.intValue(), atm.getAvailableDenominationQuantity(10).intValue()); 
+		assertEquals(num5s.intValue(), atm.getAvailableDenominationQuantity(5).intValue()); 
 	}
 
 }
